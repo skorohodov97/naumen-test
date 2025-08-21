@@ -54,6 +54,6 @@ export class ListComponent {
   }
 
   onUserClick(user: User) {
-    this.selectedEmail.set(user.email); // обновляем сигнал
+    this.selectedEmail.set(user.email); 
   }
 }

@@ -12,6 +12,7 @@
       <mat-option value="inactive">Неактивные</mat-option>
     </mat-select>
   </mat-form-field>
+<app-email-card [email]="selectedEmail()"></app-email-card>
   <mat-list>
     <mat-list-item *ngFor="let user of filteredUsers" (click)="onUserClick(user)" style="cursor: pointer;">
       <mat-icon matListIcon>{{ user.active ? 'person' : 'person_off' }}</mat-icon>
@@ -19,6 +20,4 @@
       <p matLine>{{ user.active ? 'Активен' : 'Неактивен' }}</p>
     </mat-list-item>
   </mat-list>
-  
 </div>
-<app-email-card [email]="selectedEmail()"></app-email-card>
