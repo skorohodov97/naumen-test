@@ -1,0 +1,9 @@
+<div *ngIf="email() && visible()" class="email-card">
+  <mat-card>
+    <button mat-icon-button class="close-btn" (click)="hide()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-card-title>Email выбранного пользователя</mat-card-title>
+    <mat-card-content>{{ email() }}</mat-card-content>
+  </mat-card>
+</div>

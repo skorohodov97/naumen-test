@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { User } from '../models/user.model';
 import { UsersService } from '../service/users.service';
+import {EmailCardComponent} from '../email-card/email-card.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -9,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-list',
@@ -20,7 +22,8 @@ import { CommonModule } from '@angular/common';
     MatListModule,
     MatIconModule,
     MatCardModule,
-    CommonModule
+    CommonModule,
+    EmailCardComponent
    ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.less'
@@ -28,7 +31,7 @@ import { CommonModule } from '@angular/common';
 export class ListComponent {
   users: User[] = [];
   filteredUsers: User[] = [];
-  selectedEmail: string | null = null;
+  selectedEmail = signal<string | null>(null); // сигнал
 
   searchTerm: string = '';
   filterType: string = 'all'; 
@@ -51,6 +54,6 @@ export class ListComponent {
   }
 
   onUserClick(user: User) {
-    this.selectedEmail = user.email;
+    this.selectedEmail.set(user.email); // обновляем сигнал
   }
 }
